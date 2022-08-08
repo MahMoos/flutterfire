@@ -66,6 +66,7 @@ class _DeleteAccountButtonState extends State<DeleteAccountButton> {
     return LoadingButton(
       isLoading: _isLoading,
       color: isCupertino ? CupertinoColors.destructiveRed : Colors.red,
+      contentColor: Colors.white,
       icon: isCupertino ? CupertinoIcons.delete : Icons.delete,
       label: l.deleteAccount,
       onTap: _deleteAccount,

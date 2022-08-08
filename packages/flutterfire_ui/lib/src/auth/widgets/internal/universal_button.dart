@@ -17,6 +17,7 @@ class UniversalButton extends PlatformWidget {
   final TextDirection? direction;
   final ButtonVariant? variant;
   final Color? color;
+  final Color? contentColor;
 
   const UniversalButton({
     Key? key,
@@ -27,6 +28,7 @@ class UniversalButton extends PlatformWidget {
     this.direction = TextDirection.ltr,
     this.variant,
     this.color,
+    this.contentColor,
   })  : assert(text != null || child != null),
         super(key: key);
 
@@ -44,10 +46,10 @@ class UniversalButton extends PlatformWidget {
       children: [
         if (icon != null) ...[
           if (direction == TextDirection.rtl) const SizedBox(width: 8),
-          Icon(icon, size: 20),
+          Icon(icon, size: 20, color: contentColor),
           if (direction == TextDirection.ltr) const SizedBox(width: 8),
         ],
-        this.child ?? Text(text!),
+        this.child ?? Text(text!, style: TextStyle(color: contentColor)),
       ],
     );
 
@@ -76,7 +78,8 @@ class UniversalButton extends PlatformWidget {
 
   @override
   Widget buildMaterial(BuildContext context) {
-    final child = this.child ?? Text(text!);
+    final child =
+        this.child ?? Text(text!, style: TextStyle(color: contentColor));
 
     ButtonStyle? style;
 
@@ -103,7 +106,7 @@ class UniversalButton extends PlatformWidget {
       switch (_variant) {
         case ButtonVariant.text:
           return TextButton.icon(
-            icon: Icon(icon),
+            icon: Icon(icon, color: contentColor),
             onPressed: onPressed,
             label: child,
             style: style,
@@ -111,14 +114,14 @@ class UniversalButton extends PlatformWidget {
         case ButtonVariant.filled:
           return ElevatedButton.icon(
             onPressed: onPressed,
-            icon: Icon(icon),
+            icon: Icon(icon, color: contentColor),
             label: child,
             style: style,
           );
         case ButtonVariant.outlined:
           return OutlinedButton.icon(
             onPressed: onPressed,
-            icon: Icon(icon),
+            icon: Icon(icon, color: contentColor),
             label: child,
             style: style,
           );
