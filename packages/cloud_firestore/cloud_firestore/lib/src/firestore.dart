@@ -108,7 +108,15 @@ class FirebaseFirestore extends FirebasePluginPlatform {
   void useFirestoreEmulator(String host, int port, {bool sslEnabled = false}) {
     if (kIsWeb) {
       // use useEmulator() API for web as settings are set immediately unlike native platforms
-      _delegate.useEmulator(host, port);
+      try {
+        _delegate.useEmulator(host, port);
+      } catch (e) {
+        final String code = (e as dynamic).code;
+        // this catches FirebaseError from web that occurs after hot reloading & hot restarting
+        if (code != 'failed-precondition') {
+          rethrow;
+        }
+      }
     } else {
       String mappedHost = host;
       // Android considers localhost as 10.0.2.2 - automatically handle this for users.
@@ -126,6 +134,18 @@ class FirebaseFirestore extends FirebasePluginPlatform {
         host: '$mappedHost:$port',
       );
     }
+  }
+
+  /// Performs a [namedQueryGet] and decode the result using [Query.withConverter].
+  Future<QuerySnapshot<T>> namedQueryWithConverterGet<T>(
+    String name, {
+    GetOptions options = const GetOptions(),
+    required FromFirestore<T> fromFirestore,
+    required ToFirestore<T> toFirestore,
+  }) async {
+    final snapshot = await namedQueryGet(name, options: options);
+
+    return _WithConverterQuerySnapshot<T>(snapshot, fromFirestore, toFirestore);
   }
 
   /// Reads a [QuerySnapshot] if a namedQuery has been retrieved and passed as a [Buffer] to [loadBundle()]. To read from cache, pass [GetOptions.source] value as [Source.cache].

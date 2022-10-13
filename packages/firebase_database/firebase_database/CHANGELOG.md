@@ -1,3 +1,31 @@
+## 9.1.7
+
+ - Update a dependency to the latest release.
+
+## 9.1.6
+
+ - **DOCS**: removed duplicate words in dart doc comment ([#9620](https://github.com/firebase/flutterfire/issues/9620)). ([cb980a6e](https://github.com/firebase/flutterfire/commit/cb980a6eb3cc08878ca6205e01e4d3e57add81cf))
+
+## 9.1.5
+
+ - Update a dependency to the latest release.
+
+## 9.1.4
+
+ - Update a dependency to the latest release.
+
+## 9.1.3
+
+ - Update a dependency to the latest release.
+
+## 9.1.2
+
+ - Update a dependency to the latest release.
+
+## 9.1.1
+
+ - Update a dependency to the latest release.
+
 ## 9.1.0
 
  - **FEAT**: `ServerValue.increment()` now correctly accepts a `num`  to support both integers and doubles. ([#9101](https://github.com/firebase/flutterfire/issues/9101)). ([35cce5b0](https://github.com/firebase/flutterfire/commit/35cce5b03fae00b1753fc9b6ed688c7f020a5007))

@@ -13,7 +13,7 @@ import 'package:pigeon/pigeon.dart';
       package: 'io.flutter.plugins.firebase.auth',
       className: 'GeneratedAndroidFirebaseAuth',
     ),
-    objcHeaderOut: '../firebase_auth/ios/Classes/messages.g.h',
+    objcHeaderOut: '../firebase_auth/ios/Classes/Public/messages.g.h',
     objcSourceOut: '../firebase_auth/ios/Classes/messages.g.m',
   ),
 )
@@ -39,14 +39,14 @@ class PigeonMultiFactorInfo {
   const PigeonMultiFactorInfo({
     this.displayName,
     required this.enrollmentTimestamp,
-    required this.factorId,
+    this.factorId,
     required this.uid,
     required this.phoneNumber,
   });
 
   final String? displayName;
   final double enrollmentTimestamp;
-  final String factorId;
+  final String? factorId;
   final String uid;
   final String? phoneNumber;
 }

@@ -1,3 +1,31 @@
+## 2.8.10
+
+ - **FIX**: fix a query error in Flutter Web that was affecting the parsing of ancient dates ([#9633](https://github.com/firebase/flutterfire/issues/9633)). ([9250d45f](https://github.com/firebase/flutterfire/commit/9250d45f1d7ece9335b2c4c4795fecc728df3de5))
+
+## 2.8.9
+
+ - Update a dependency to the latest release.
+
+## 2.8.8
+
+ - Update a dependency to the latest release.
+
+## 2.8.7
+
+ - Update a dependency to the latest release.
+
+## 2.8.6
+
+ - Update a dependency to the latest release.
+
+## 2.8.5
+
+ - Update a dependency to the latest release.
+
+## 2.8.4
+
+ - Update a dependency to the latest release.
+
 ## 2.8.3
 
  - **FIX**: fix apply method for arrayRemove & arrayUnion ([#9281](https://github.com/firebase/flutterfire/issues/9281)). ([29ef7c2a](https://github.com/firebase/flutterfire/commit/29ef7c2aa4f6f9f87802806508c1b9f142a3890e))
